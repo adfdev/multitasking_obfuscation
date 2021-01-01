@@ -1,0 +1,22 @@
+PODS:
+  - Flutter (1.0.0)
+  - multitasking_obfuscation (0.0.1):
+    - Flutter
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - multitasking_obfuscation (from `.symlinks/plugins/multitasking_obfuscation/ios`)
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  multitasking_obfuscation:
+    :path: ".symlinks/plugins/multitasking_obfuscation/ios"
+
+SPEC CHECKSUMS:
+  Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+  multitasking_obfuscation: b48c739602ccbedbcdb555c6bb918ee133fb0953
+
+PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
+
+COCOAPODS: 1.10.0
