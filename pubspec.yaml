@@ -1,7 +1,6 @@
 name: multitasking_obfuscation
-description: A new flutter plugin project.
+description: An utils flutter package for obfuscation your app when user go in multitasking mode.
 version: 1.0.0
-author: "adfdev"
 homepage: "https://github.com/adfdev/multitasking_obfuscation.git"
 
 environment:
