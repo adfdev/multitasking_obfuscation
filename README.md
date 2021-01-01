@@ -3,8 +3,10 @@
 An utils flutter package for obfuscation your app when user go in multitasking mode
 
 ##### iOS screenshots
+<img src="https://raw.githubusercontent.com/adfdev/multitasking_obfuscation/master/screenshots/ios/screen_1.png" height="400"> <img src="https://raw.githubusercontent.com/adfdev/multitasking_obfuscation/master/screenshots/ios/screen_2.png" height="400">
 
 ##### Android screenshots
+<img src="https://raw.githubusercontent.com/adfdev/multitasking_obfuscation/master/screenshots/android/screen_1.png" height="400">
 
 ## How use
 
