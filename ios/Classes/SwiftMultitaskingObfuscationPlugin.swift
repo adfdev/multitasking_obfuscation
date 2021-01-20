@@ -61,7 +61,7 @@ public class SwiftMultitaskingObfuscationPlugin: NSObject, FlutterPlugin {
         imageView.contentMode = contentViewMode
         imageView.backgroundColor = backgroundColor
         window?.addSubview(imageView)
-        imageView.image = image?.resize(withSize: CGSize(width: imageWidth, height: imageHeigth), contentMode: .contentAspectFill)
+        imageView.image = image?.resize(targetSize: CGSize(width: imageWidth, height: imageHeigth))
     }
 
     private func prepareForEnteringIntoActiveMode() {
@@ -93,32 +93,35 @@ extension UIColor {
 }
 
 extension UIImage {
-    enum ContentMode {
-        case contentFill
-        case contentAspectFill
-        case contentAspectFit
-    }
-    
-    func resize(withSize size: CGSize, contentMode: ContentMode = .contentAspectFill) -> UIImage? {
-        let aspectWidth = size.width / self.size.width
-        let aspectHeight = size.height / self.size.height
-        
-        switch contentMode {
-        case .contentFill:
-            return resize(withSize: size)
-        case .contentAspectFit:
-            let aspectRatio = min(aspectWidth, aspectHeight)
-            return resize(withSize: CGSize(width: self.size.width * aspectRatio, height: self.size.height * aspectRatio))
-        case .contentAspectFill:
-            let aspectRatio = max(aspectWidth, aspectHeight)
-            return resize(withSize: CGSize(width: self.size.width * aspectRatio, height: self.size.height * aspectRatio))
+
+    func resize(targetSize: CGSize) -> UIImage {
+        if #available(iOS 10.0, *) {
+            return UIGraphicsImageRenderer(size:targetSize).image { _ in
+                self.draw(in: CGRect(origin: .zero, size: targetSize))
+            }
+        } else {
+           return self
         }
     }
-    
-    private func resize(withSize size: CGSize) -> UIImage? {
-        UIGraphicsBeginImageContextWithOptions(size, false, self.scale)
-        defer { UIGraphicsEndImageContext() }
-        draw(in: CGRect(x: 0.0, y: 0.0, width: size.width, height: size.height))
-        return UIGraphicsGetImageFromCurrentImageContext()
+
+    func resize(scaledToWidth desiredWidth: CGFloat) -> UIImage {
+        let oldWidth = size.width
+        let scaleFactor = desiredWidth / oldWidth
+
+        let newHeight = size.height * scaleFactor
+        let newWidth = oldWidth * scaleFactor
+        let newSize = CGSize(width: newWidth, height: newHeight)
+
+        return resize(targetSize: newSize)
     }
+
+    func resize(scaledToHeight desiredHeight: CGFloat) -> UIImage {
+        let scaleFactor = desiredHeight / size.height
+        let newWidth = size.width * scaleFactor
+        let newSize = CGSize(width: newWidth, height: desiredHeight)
+
+        return resize(targetSize: newSize)
+    }
+
 }
+
