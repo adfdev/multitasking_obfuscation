@@ -20,8 +20,8 @@ class MultitaskingObfuscation {
       await _channel.invokeMethod('init', <String, dynamic>{
         "hexColor": backgroundColor.value,
         "bytesImage": imageBytes,
-        "imageWidth": imageSize.width,
-        "imageHeight": imageSize.height,
+        "imageWidth": imageSize.width.ceilToDouble(),
+        "imageHeight": imageSize.height.ceilToDouble(),
         "contentViewMode": contentPosition.toShortString().toLowerCase(),
       });
     } on PlatformException catch (e) {
