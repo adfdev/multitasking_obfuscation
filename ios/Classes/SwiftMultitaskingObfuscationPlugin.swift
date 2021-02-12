@@ -2,7 +2,7 @@ import Flutter
 import UIKit
 
 public class SwiftMultitaskingObfuscationPlugin: NSObject, FlutterPlugin {
-    let secureOverlayViewTag : Int = 999995464783
+    let secureOverlayViewTag = 98521
     var backgroundColor : UIColor = UIColor.white
     var image : UIImage? = UIImage()
     var imageWidth : Int = 0

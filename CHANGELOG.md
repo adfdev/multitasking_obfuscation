@@ -1,3 +1,7 @@
+## 1.0.3
+
+* Fix "int integer literal" error during build ios
+
 ## 1.0.2
 
 * Round decimal part of double size to fix Exception in Swift
